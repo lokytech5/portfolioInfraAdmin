@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Virtual environments
+env/
+venv/
+.venv/
+ENV/
+.ENV/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfstate.*.backup
+terraform.tfstate.d/
+crash.log
+
+# AWS
+*.aws
+.aws/
+credentials
+config
+
+# Local & OS
+.DS_Store
+*.log
+*.env
+*.swp
+
+# IDEs
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Project-specific
+docs/results/
+scripts/__pycache__/
+# src/lambda/*.zip
+
+/frontend/daemon/.next
+/frontend/daemon/node_modules
+
