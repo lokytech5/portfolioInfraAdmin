@@ -53,7 +53,7 @@ data "aws_iam_policy_document" "infra_developer_policy" {
   }
 }
 
-resource "aws_iam_group_policy_attachment" "infra_develoipers_attach" {
+resource "aws_iam_group_policy_attachment" "infra_developers_attach" {
   group      = aws_iam_group.infra_developers.name
   policy_arn = aws_iam_policy.infra_developer_policy.arn
 }
