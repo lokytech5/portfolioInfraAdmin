@@ -31,19 +31,31 @@ data "aws_iam_policy_document" "ssm_app_read" {
     actions = [
       "ssm:GetParameter",
       "ssm:GetParameters",
-      "ssm:GetParametersByPath",
-      "ssm:DescribeParameters",
-      "ssm:List*"
+      "ssm:GetParametersByPath"
     ]
-    resources = ["arn:aws:ssm:${data.aws_caller_identity.current.account_id}:parameter/portfolio/backend/*"]
+    resources = [
+    "arn:aws:ssm:${var.region}:${data.aws_caller_identity.current.account_id}:parameter/portfolio/backend/*"]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "ssm:DescribeParameters"
+    ]
+    resources = ["*"]
   }
 }
+
+
+
 
 resource "aws_iam_policy" "ssm_app_read" {
   name        = "portfolio-ssm-app-read"
   description = "Allow EC2 app to read SSM parameters Store for /portfolio/backend/*"
+  path        = "/"
   policy      = data.aws_iam_policy_document.ssm_app_read.json
 }
+
 
 #Attach SSM Read Policy to EC2 Role
 resource "aws_iam_role_policy_attachment" "app_ssm_attach" {
