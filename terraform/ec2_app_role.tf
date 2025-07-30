@@ -42,7 +42,7 @@ data "aws_iam_policy_document" "ssm_app_read" {
 resource "aws_iam_policy" "ssm_app_read" {
   name        = "portfolio-ssm-app-read"
   description = "Allow EC2 app to read SSM parameters Store for /portfolio/backend/*"
-  policy      = data.aws_iam_policy_document.ssm_app.read.json
+  policy      = data.aws_iam_policy_document.ssm_app_read.json
 }
 
 #Attach SSM Read Policy to EC2 Role
